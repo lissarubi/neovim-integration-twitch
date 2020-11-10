@@ -74,8 +74,8 @@ func main() {
   }
 
 	token := os.Getenv("TOKEN")
-	user := os.getEnv("USER")
-	channel := os.getEnv("CHANNEL")
+	user := os.Getenv("USER")
+	channel := os.Getenv("CHANNEL")
 
         options := gotirc.Options{
             Host:     "irc.chat.twitch.tv",
@@ -91,9 +91,9 @@ func main() {
 					fmt.Println(msg)
 					messageString := strings.Split(msg, " ")
 
-					listThemes(messageString, client, channel, tags)
-					move(messageString, tags)
-					changeVimColor(messageString, client, channel, tags)
+					go listThemes(messageString, client, channel, tags)
+					go move(messageString, tags)
+					go changeVimColor(messageString, client, channel, tags)
      })
 
 		 client.Connect(user, token)
