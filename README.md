@@ -4,6 +4,8 @@ NTI (Neovim Twitch Integration) is a Golang Twitch Bot what your viewers can cha
 
 # Setting Up
 
+Unzip `colors.zip`
+
 Install [Neovim Remote](https://github.com/mhinz/neovim-remote)
 
 Create a `.env` file with your Twitch's token, like:
