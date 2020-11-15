@@ -6,6 +6,8 @@ import (
 	"os/exec"
 	"log"
 	"strings"
+	"net"
+	"github.com/msgpack-rpc/msgpack-rpc-go/rpc"
 	"github.com/joho/godotenv"
 	"github.com/jrm780/gotirc"
 )
@@ -30,7 +32,7 @@ func execute(command string) string {
   return output
 }
 
-func changeVimColor(messageString []string, client *gotirc.Client, channel string, tags map[string]string){
+func changeVimColor(messageString []string, client *gotirc.Client, channel string, tags map[string]string, clientRPC *rpc.Session){
 
 
 	if len(messageString) == 2{
@@ -40,7 +42,7 @@ func changeVimColor(messageString []string, client *gotirc.Client, channel strin
 			themesAvailble := themes()
 			_, found := Find(themesAvailble, messageString[1])
 			if found {
-				execute("nvr --remote-send \"<ESC>:color " + messageString[1] + "<CR>\"")
+				sendInput("<ESC>:color " + messageString[1] + "<CR>", clientRPC)
 			}
 			if !found{
 				client.Say(channel, tags["display-name"] + " Tema não encontrado.")
@@ -57,16 +59,36 @@ func listThemes(messageString []string, client *gotirc.Client, channel string, t
 	}
 }
 
-func move(messageString []string, tags map[string]string){
+func move(messageString []string, tags map[string]string, clientRPC *rpc.Session){
 	if messageString[0] == "!move" && len(messageString) == 2{
 		movement := messageString[1]
 		if !strings.ContainsAny(movement, "drRD:<>aioAIOuUvtyYcCsSxX!|-~"){
-			execute("nvr --remote-send \"<ESC>" + messageString[1] + "\"")
+			sendInput("<ESC>" + messageString[1], clientRPC)
 		}
 	}
 }
 
+func initRPC() *rpc.Session {
+	conn, err := net.Dial("tcp", "localhost:" + os.Getenv(PORT))
+	if err != nil {
+                fmt.Println("fail to connect to server.")
+	}
+	clientRPC := rpc.NewSession(conn, true)
+
+	return clientRPC
+}
+
+func sendInput(input string, clientRPC *rpc.Session){
+	_, xerr := clientRPC.Send("nvim_input", input)
+	if xerr != nil {
+		fmt.Println(xerr)
+		return
+	}
+}
+
 func main() {
+
+	clientRPC := initRPC()
 
   errEnv := godotenv.Load()
   if errEnv != nil {
@@ -92,8 +114,8 @@ func main() {
 					messageString := strings.Split(msg, " ")
 
 					go listThemes(messageString, client, channel, tags)
-					go move(messageString, tags)
-					go changeVimColor(messageString, client, channel, tags)
+					go move(messageString, tags, clientRPC)
+					go changeVimColor(messageString, client, channel, tags, clientRPC)
      })
 
 		 client.Connect(user, token)

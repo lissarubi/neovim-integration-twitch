@@ -14,7 +14,14 @@ Create a `.env` file with your Twitch's token, like:
 TOKEN=[token]
 USER=[user]
 CHANNEL=[channel]
+PORT=[number]
 ```
+
+> Remember: PORT is a UNIX port, like `6126` or `7352`. Put a port what is not being use to any other program.
+
+# Running
+
+Use `nvim --lister [PORT]` and you Vim is running with the integration.
 
 # Commands
 
