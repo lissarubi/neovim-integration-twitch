@@ -69,7 +69,7 @@ func move(messageString []string, tags map[string]string, clientRPC *rpc.Session
 }
 
 func initRPC() *rpc.Session {
-	conn, err := net.Dial("tcp", "localhost:" + os.Getenv(PORT))
+	conn, err := net.Dial("tcp", "localhost:" + os.Getenv("PORT"))
 	if err != nil {
                 fmt.Println("fail to connect to server.")
 	}
