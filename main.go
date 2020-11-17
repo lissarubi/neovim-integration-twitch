@@ -68,8 +68,8 @@ func move(messageString []string, tags map[string]string, clientRPC *rpc.Session
 	}
 }
 
-func initRPC() *rpc.Session {
-	conn, err := net.Dial("tcp", "localhost:" + os.Getenv("PORT"))
+func initRPC(port string) *rpc.Session {
+	conn, err := net.Dial("tcp", "localhost:" + port)
 	if err != nil {
                 fmt.Println("fail to connect to server.")
 	}
@@ -88,7 +88,6 @@ func sendInput(input string, clientRPC *rpc.Session){
 
 func main() {
 
-	clientRPC := initRPC()
 
   errEnv := godotenv.Load()
   if errEnv != nil {
@@ -98,6 +97,9 @@ func main() {
 	token := os.Getenv("TOKEN")
 	user := os.Getenv("USER")
 	channel := os.Getenv("CHANNEL")
+	port := os.Getenv("PORT")
+
+	clientRPC := initRPC(port)
 
         options := gotirc.Options{
             Host:     "irc.chat.twitch.tv",
