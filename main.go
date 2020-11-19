@@ -55,7 +55,7 @@ func listThemes(messageString []string, client *gotirc.Client, channel string, t
 
 	if messageString[0] == "!themes"{
 
-		client.Say(channel, tags["display-name"] + " Veja os temas disponíveis em: https://pastebin.com/a2hRNkqj")
+		client.Say(channel, tags["display-name"] + " Veja os temas disponíveis em: https://github.com/edersonferreira/neovim-integration-twitch/blob/main/colors.txt")
 	}
 }
 
