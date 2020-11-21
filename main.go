@@ -62,7 +62,7 @@ func listThemes(messageString []string, client *gotirc.Client, channel string, t
 func move(messageString []string, tags map[string]string, clientRPC *rpc.Session){
 	if messageString[0] == "!move" && len(messageString) == 2{
 		movement := messageString[1]
-		if !strings.ContainsAny(movement, "drRD:<>aioAIOuUvtyYcCsSxX!|-~"){
+		if !strings.ContainsAny(movement, "drRD:<>ZaioAIOuUvtyYcCsSxX!|-~"){
 			sendInput("<ESC>" + messageString[1], clientRPC)
 		}
 	}
