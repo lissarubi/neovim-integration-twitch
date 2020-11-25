@@ -39,7 +39,8 @@ Tomorrow-Night             garden                     py-darcula
 Tomorrow-Night-Blue        gardener                   pyte
 Tomorrow-Night-Bright      gemcolors                  python
 Tomorrow-Night-Eighties    genericdc                  quagmire
-VIvid                      genericdc-light            quantum
+VIvid                      violenta
+genericdc-light            quantum
 White2                     gentooish                  radicalgoodspeed
 abbott                     getafe                     raggi
 abra                       getfresh                   railscasts
