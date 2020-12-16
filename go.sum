@@ -1,0 +1,8 @@
+github.com/joho/godotenv v1.3.0 h1:Zjp+RcGpHhGlrMbJzXTrZZPrWj+1vfm90La1wgB6Bhc=
+github.com/joho/godotenv v1.3.0/go.mod h1:7hK45KPybAkOC6peb+G5yklZfMxEjkZhHbwpqxOKXbg=
+github.com/jrm780/gotirc v0.0.0-20180213030644-65759644127d h1:rPTN5bl17eOrBtzdasV+iBFIUkYjvdRB94242+pgx7A=
+github.com/jrm780/gotirc v0.0.0-20180213030644-65759644127d/go.mod h1:9YuEelFAhC9eleF35co83NW/8weH6m/1qWWt9wP7FKE=
+github.com/msgpack-rpc/msgpack-rpc-go v0.0.0-20131026060856-c76397e1782b h1:6XGbs6qqORYTSLxOWS7JeWnO79Xvucus6RKHicqMoF4=
+github.com/msgpack-rpc/msgpack-rpc-go v0.0.0-20131026060856-c76397e1782b/go.mod h1:YUWGR1lA7NRnzRjOmYpSgNVip20OCp6NMBwiVFPPhZ8=
+github.com/msgpack/msgpack-go v0.0.0-20130625150338-8224460e6fa3 h1:6pY2f1fJC+u27cqhH0sPkXRquVmGF0VOkLKqraRMYfg=
+github.com/msgpack/msgpack-go v0.0.0-20130625150338-8224460e6fa3/go.mod h1:jDCQZQaHCHpBYqM4WoGyujFc55bazGAEwK27iK4PQTI=
