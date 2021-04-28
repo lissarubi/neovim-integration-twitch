@@ -19,7 +19,17 @@ PORT=[number]
 
 # Running
 
-Use `nvim --listen [PORT]` and you Vim is running with the integration.
+## Golang
+
+Run `go run main.go` to start the server.
+
+## Docker
+
+Run `docker run -it --net=host neovim-integration-twitch` to start the server. If you prefer docker composer, use `docker-compose up` in the repository directory.
+
+---
+
+And Use `nvim --listen 127.0.0.1:[PORT]` and you Vim is running with the integration.
 
 # Commands
 
