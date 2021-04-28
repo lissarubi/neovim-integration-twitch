@@ -1,0 +1,5 @@
+services:
+  bot:
+    image: neovim-integration-twitch
+    build: .
+    network_mode: "host"
